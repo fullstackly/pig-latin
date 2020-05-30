@@ -36,5 +36,5 @@ How to use :
 `$ go run cmd/pig-latin.go -h`  
 will show help-menu
 
-`$ go run cmd/pig-latin.go -translate "hello"`
-<br/> will return `"ellohay"`
+`$ go run cmd/pig-latin.go -translate "hello Dolly and Polly"`
+<br/> will return `"ellohay ollyDay andyay ollyPay"`

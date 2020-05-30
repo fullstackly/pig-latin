@@ -19,16 +19,21 @@ var (
 
 // Translate translates english text according to pig-latin rules
 func Translate(text string) string {
+	tokens := strings.Split(text, " ")
+	for i, token := range tokens {
+		tokens[i] = wordTranslate(token)
+	}
+	return strings.Join(tokens, " ")
+}
+
+func wordTranslate(word string) string {
 	var buf bytes.Buffer
 
-	if strings.Contains(allConsonants, string(text[0])) {
-		prefix, base := splitPrefix(text)
-		buf.WriteString(base)
-		buf.WriteString(prefix)
-		buf.WriteString(consEnding)
-	} else if strings.Contains(allVowels, string(text[0])) {
-		buf.WriteString(text)
-		buf.WriteString(vowelEnding)
+	if strings.Contains(allConsonants, string(word[0])) {
+		prefix, base := splitPrefix(word)
+		buf.WriteString(base + prefix + consEnding)
+	} else if strings.Contains(allVowels, string(word[0])) {
+		buf.WriteString(word + vowelEnding)
 	}
 
 	return buf.String()
