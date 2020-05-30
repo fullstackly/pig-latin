@@ -28,3 +28,13 @@ CLI for converting text according to Pig Latin
 
 *Vowels:  
 [A, E, I, O, U, Y]*
+
+---
+How to use :
+---
+
+`$ go run cmd/pig-latin.go -h`  
+will show help-menu
+
+`$ go run cmd/pig-latin.go -translate "hello"`
+<br/> will return `"ellohay"`
