@@ -8,7 +8,7 @@ import (
 const (
 	consonants  = "B, C, D, F, G, H, J, K, L, M, N, P, Q, R, S, T, V, W, X, Z"
 	vowels      = "A, E, I, O, U, Y"
-	consEnging  = "ay"
+	consEnding  = "ay"
 	vowelEnding = "yay"
 )
 
@@ -25,7 +25,7 @@ func Translate(text string) string {
 		prefix, base := splitPrefix(text)
 		buf.WriteString(base)
 		buf.WriteString(prefix)
-		buf.WriteString(consEnging)
+		buf.WriteString(consEnding)
 	} else if strings.Contains(allVowels, string(text[0])) {
 		buf.WriteString(text)
 		buf.WriteString(vowelEnding)

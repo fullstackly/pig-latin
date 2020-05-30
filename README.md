@@ -1,6 +1,6 @@
 # pig-latin
 CLI for converting text according to Pig Latin
-## Pig Latin :
+## Rules :
 
 
 
