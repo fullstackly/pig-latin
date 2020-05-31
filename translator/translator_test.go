@@ -23,6 +23,13 @@ func TestEngine(t *testing.T) {
 			assertTranslation(t, tt.initial, tt.translated, got)
 		}
 	})
+
+	t.Run("translating phrases with punctuation", func(t *testing.T) {
+		for _, tt := range puncTests {
+			got := Translate(tt.initial)
+			assertTranslation(t, tt.initial, tt.translated, got)
+		}
+	})
 }
 
 var consTests = []struct {
@@ -64,6 +71,17 @@ var vowelTests = []struct {
 	{initial: "always", translated: "alwaysyay"},
 	{initial: "ends", translated: "endsyay"},
 	{initial: "I", translated: "Iyay"},
+}
+
+var puncTests = []struct {
+	initial    string
+	translated string
+}{
+	{initial: "Eat, Pray, Love", translated: "Eatyay, ayPray, oveLay"},
+	{initial: "Hello everybody: Dolly, Molly & Polly!",
+		translated: "elloHay everybodyyay: ollyDay, ollyMay & ollyPay!"},
+	{initial: "Awesome programming languages: - Golang, - Ruby, - TypeScript, - Swift!",
+		translated: "Awesomeyay ogrammingpray languages: - olangGay , - ubyRay , - ypeScriptTay , - iftSway ! "},
 }
 
 func assertTranslation(t *testing.T, initial, want, got string) {
