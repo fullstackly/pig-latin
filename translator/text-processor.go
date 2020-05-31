@@ -23,15 +23,12 @@ func TranslateText(text string) string {
 		tokens = append(tokens, tockenize(chunk))
 	}
 
-	for i, token := range tokens {
-		if len(token.word) != 0 {
-			tokens[i].word = wordTranslate(token.word)
-		}
-	}
-
 	var pigWords []string
 
 	for _, token := range tokens {
+		if token.word != "" {
+			token.word = wordTranslate(token.word)
+		}
 		pigWords = append(pigWords, token.String())
 	}
 
