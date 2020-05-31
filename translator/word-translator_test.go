@@ -2,7 +2,7 @@ package translator
 
 import "testing"
 
-func TestEngine(t *testing.T) {
+func TestWordTranslate(t *testing.T) {
 	t.Run("translating words that begin with consonant sounds", func(t *testing.T) {
 		for _, tt := range consTests {
 			got := wordTranslate(tt.initial)
@@ -23,13 +23,14 @@ func TestEngine(t *testing.T) {
 			assertTranslation(t, tt.initial, tt.translated, got)
 		}
 	})
+}
 
-	t.Run("translating phrases with punctuation", func(t *testing.T) {
-		for _, tt := range puncTests {
-			got := TranslateText(tt.initial)
-			assertTranslation(t, tt.initial, tt.translated, got)
-		}
-	})
+func assertTranslation(t *testing.T, initial, want, got string) {
+	t.Helper()
+
+	if got != want {
+		t.Errorf("expect %q translate to %q instead got %q", initial, want, got)
+	}
 }
 
 var consTests = []struct {
@@ -40,10 +41,6 @@ var consTests = []struct {
 	{initial: "latin", translated: "atinlay"},
 	{initial: "banana", translated: "ananabay"},
 	{initial: "will", translated: "illway"},
-	{initial: "butler", translated: "utlerbay"},
-	{initial: "happy", translated: "appyhay"},
-	{initial: "duck", translated: "uckday"},
-	{initial: "me", translated: "emay"},
 }
 
 var consClustersTests = []struct {
@@ -54,9 +51,6 @@ var consClustersTests = []struct {
 	{initial: "string", translated: "ingstray"},
 	{initial: "stupid", translated: "upidstay"},
 	{initial: "glove", translated: "oveglay"},
-	{initial: "trash", translated: "ashtray"},
-	{initial: "floor", translated: "oorflay"},
-	{initial: "store", translated: "orestay"},
 }
 
 var vowelTests = []struct {
@@ -67,27 +61,4 @@ var vowelTests = []struct {
 	{initial: "omelet", translated: "omeletyay"},
 	{initial: "are", translated: "areyay"},
 	{initial: "egg", translated: "eggyay"},
-	{initial: "explain", translated: "explainyay"},
-	{initial: "always", translated: "alwaysyay"},
-	{initial: "ends", translated: "endsyay"},
-	{initial: "I", translated: "Iyay"},
-}
-
-var puncTests = []struct {
-	initial    string
-	translated string
-}{
-	{initial: "Eat, Pray, Love", translated: "Eatyay, ayPray, oveLay"},
-	{initial: "Hello everybody: Dolly, Molly & Polly!",
-		translated: "elloHay everybodyyay: ollyDay, ollyMay & ollyPay!"},
-	{initial: "Awesome programming languages: - Golang, - Ruby, - TypeScript, - Swift!",
-		translated: "Awesomeyay ogrammingpray anguageslay: - olangGay, - ubyRay, - ypeScriptTay, - iftSway!"},
-}
-
-func assertTranslation(t *testing.T, initial, want, got string) {
-	t.Helper()
-
-	if got != want {
-		t.Errorf("expect %q translate to %q instead got %q", initial, want, got)
-	}
 }
