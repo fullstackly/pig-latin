@@ -5,28 +5,28 @@ import "testing"
 func TestEngine(t *testing.T) {
 	t.Run("translating words that begin with consonant sounds", func(t *testing.T) {
 		for _, tt := range consTests {
-			got := Translate(tt.initial)
+			got := wordTranslate(tt.initial)
 			assertTranslation(t, tt.initial, tt.translated, got)
 		}
 	})
 
 	t.Run("translating words begin with consonant clusters", func(t *testing.T) {
 		for _, tt := range consClustersTests {
-			got := Translate(tt.initial)
+			got := wordTranslate(tt.initial)
 			assertTranslation(t, tt.initial, tt.translated, got)
 		}
 	})
 
 	t.Run("translating words that begin with vowel sounds", func(t *testing.T) {
 		for _, tt := range vowelTests {
-			got := Translate(tt.initial)
+			got := wordTranslate(tt.initial)
 			assertTranslation(t, tt.initial, tt.translated, got)
 		}
 	})
 
 	t.Run("translating phrases with punctuation", func(t *testing.T) {
 		for _, tt := range puncTests {
-			got := Translate(tt.initial)
+			got := TranslateText(tt.initial)
 			assertTranslation(t, tt.initial, tt.translated, got)
 		}
 	})
@@ -81,7 +81,7 @@ var puncTests = []struct {
 	{initial: "Hello everybody: Dolly, Molly & Polly!",
 		translated: "elloHay everybodyyay: ollyDay, ollyMay & ollyPay!"},
 	{initial: "Awesome programming languages: - Golang, - Ruby, - TypeScript, - Swift!",
-		translated: "Awesomeyay ogrammingpray languages: - olangGay , - ubyRay , - ypeScriptTay , - iftSway ! "},
+		translated: "Awesomeyay ogrammingpray anguageslay: - olangGay, - ubyRay, - ypeScriptTay, - iftSway!"},
 }
 
 func assertTranslation(t *testing.T, initial, want, got string) {

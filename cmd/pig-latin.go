@@ -18,7 +18,7 @@ func main() {
 
 func process() {
 	if len(*text) != 0 {
-		fmt.Println(translator.Translate(*text))
+		fmt.Println(translator.TranslateText(*text))
 	} else {
 		fmt.Println("Enter command and text. \nEnter -h for help")
 	}

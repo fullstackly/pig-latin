@@ -5,27 +5,7 @@ import (
 	"strings"
 )
 
-const (
-	consonants  = "B, C, D, F, G, H, J, K, L, M, N, P, Q, R, S, T, V, W, X, Z"
-	vowels      = "A, E, I, O, U, Y"
-	consEnding  = "ay"
-	vowelEnding = "yay"
-)
-
-var (
-	allConsonants = consonants + strings.ToLower(consonants)
-	allVowels     = vowels + strings.ToLower(vowels)
-)
-
-// Translate translates english text according to pig-latin rules
-func Translate(text string) string {
-	tokens := strings.Split(text, " ")
-	for i, token := range tokens {
-		tokens[i] = wordTranslate(token)
-	}
-	return strings.Join(tokens, " ")
-}
-
+// wordTranslate translates single word according to pig-latin rules
 func wordTranslate(word string) string {
 	var buf bytes.Buffer
 
@@ -39,6 +19,7 @@ func wordTranslate(word string) string {
 	return buf.String()
 }
 
+// splitPrefix splits a word for prefix & base according to big-latin rules
 func splitPrefix(word string) (prefix, base string) {
 	var subBuf bytes.Buffer
 
