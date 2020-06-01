@@ -9,6 +9,10 @@ import (
 func wordTranslate(word string) string {
 	var buf bytes.Buffer
 
+	if len(word) == 0 {
+		return word
+	}
+
 	if strings.Contains(allConsonants, string(word[0])) {
 		prefix, base := splitPrefix(word)
 		buf.WriteString(base + prefix + consEnding)

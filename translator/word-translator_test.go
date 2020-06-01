@@ -23,6 +23,11 @@ func TestWordTranslate(t *testing.T) {
 			assertTranslation(t, tt.initial, tt.translated, got)
 		}
 	})
+
+	t.Run("translating empty string", func(t *testing.T) {
+		got := wordTranslate("")
+		assertTranslation(t, "", "", got)
+	})
 }
 
 func assertTranslation(t *testing.T, initial, want, got string) {
