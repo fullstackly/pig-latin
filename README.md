@@ -30,11 +30,17 @@ CLI for converting text according to Pig Latin
 [A, E, I, O, U, Y]*
 
 ---
+How to install :
+---
+
+`$ go build`
+
+---
 How to use :
 ---
 
-`$ go run cmd/pig-latin.go -h`  
+`$ ./pig-latin -h`  
 will show help-menu
 
-`$ go run cmd/pig-latin.go -translate "hello Dolly and Polly"`
+`$ ./pig-latin -translate "hello Dolly and Polly"`
 <br/> will return `"ellohay ollyDay andyay ollyPay"`
